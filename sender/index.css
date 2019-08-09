@@ -1,0 +1,22 @@
+google-cast-launcher {
+    height: 100px;
+    width: 100px;
+    position: center;
+    margin: auto;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+#menu {
+    margin: auto;
+    position: center;
+    text-align: center;
+    width: 150px;
+}
+
+#source {
+    background-color: lightgray;
+    color: black;
+    padding: 20px;
+    font-size: 20px;
+}
