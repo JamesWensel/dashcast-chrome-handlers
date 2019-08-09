@@ -1,11 +1,10 @@
 {
-  "name": "chromecast-hello-world",
+  "name": "sender",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
   "dependencies": {
-    "express": "^4.17.1",
-    "nodemon": "^1.19.1"
+    "express": "^4.17.1"
   },
   "devDependencies": {},
   "scripts": {

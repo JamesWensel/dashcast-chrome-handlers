@@ -1,22 +1,31 @@
+let castSession;
+
 initializeCastApi = function() {
     cast.framework.CastContext.getInstance().setOptions({
-        receiverApplicationId: '2D880D9D'
+        receiverApplicationId: '2D880D9D',
+        autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
     });
 
-    var context = cast.framework.CastContext.getInstance();
-    context.addEventListener(
-        cast.framework.RemotePlayerEventType.IS_CONNECTED_CHANGED, 
-        sendMedia().bind(this)
+    var player = new cast.framework.RemotePlayer();
+    var playerController = new cast.framework.RemotePlayerController(player);
+    
+    playerController.addEventListener(
+        cast.framework.RemotePlayerEventType.IS_CONNECTED_CHANGED,
+        initializeCastSession().bind(this)
     );
 };
 
-sendMedia = function() {
-    let castSession = cast.framework.CastContext.getInstance().getCurrentSession();
+initializeCastSession = function() {
+    castSession = cast.framework.CastContext.getInstance().getCurrentSession(); 
+    console.log("Session: " + castSession);
+}
 
-    let e = document.getElementById("url-dropdown");
-    let currentMediaURL = e.options[e.selectedIndex].text; 
+sendMedia = function() {
+    let e = document.getElementById("select-url");
+    let currentMediaURL = e.options[e.selectedIndex+1].text;
 
     let mediaInfo = new chrome.cast.media.MediaInfo(currentMediaURL, 'text/javascript');
+
     let request = new chrome.cast.media.LoadRequest(mediaInfo);
     castSession.loadMedia(request).then(
     function() { console.log('Load succeed'); },
