@@ -8,4 +8,4 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/static/index.html');
 })
 
-server.listen(3002);
+server.listen(6000);
