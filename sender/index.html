@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <google-cast-launcher id="castbutton" style="display: block !important"></google-cast-launcher>
+    <google-cast-launcher id="castbutton" style="display:block !important"></google-cast-launcher>
+    <div id="menu">
+        <div id="dropdown">
+            <select>
+                <option value="0">Select source:</option>
+                <option value="1">ngrok1</option>
+                <option value="2">ngrok2</option>
+                <option value="3">ngrok3</option>
+            </select>
+        </div>
+    </div>
     <script>
         window['__onGCastApiAvailable'] = function(isAvailable) {
             if (isAvailable) {
